@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  redis-api-projects:
+    image: redis
+    command: redis-server
+    ports:
+      - "6379:6379"
+    networks:
+      - lkp_dev
+  mongo-api-projects:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+    networks:
+      - lkp_dev
+  api-projects:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    networks:
+      - lkp_dev
+    restart: on-failure
+    depends_on:
+      - "redis-api-projects"
+      - "postgres-api-projects"
+
+networks:
+  lkp_dev:
+    external:
+      name: lkp_dev

@@ -1,0 +1,8 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "start",
+  "compilerOptions": {
+    "assets": ["**/*.hbs"],
+    "plugins": ["@nestjs/swagger"]
+  }
+}

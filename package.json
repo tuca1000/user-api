@@ -1,0 +1,204 @@
+{
+  "name": "@tuca1000/user-api",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"**/*.ts\" \"tests/**/*.ts\"",
+    "ts-node": "ts-node --transpile-only -r tsconfig-paths/register",
+    "start": "nest start",
+    "start:prod": "node dist/start/main.js",
+    "start:debug:prod": "DEBUG=api:* node dist/start/main.js",
+    "start:dev": "nest start --watch",
+    "start:debug:dev": "DEBUG=api:* nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "lint:fix": "eslint \"{config,start,app,database,tests,providers}/**/*.ts\" -c ./package.json --fix",
+    "test": "npm run generate:dev && NODE_ENV=testing jest --verbose --setupFiles --runInBand --testTimeout=5000",
+    "test:ci": "npm run generate:dev && jest --verbose --setupFiles --runInBand --testTimeout=5000",
+    "test:watch": "npm run generate:dev && NODE_ENV=testing jest --watch --setupFiles --runInBand --testTimeout=5000",
+    "test:cov": "npm run generate:dev && NODE_ENV=testing jest --coverage --setupFiles --runInBand --testTimeout=5000",
+    "test:e2e": "npm run generate:dev && NODE_ENV=testing jest --config ./tests/jest-e2e.json --setupFiles --runInBand --testTimeout=5000",
+    "test:debug": "npm run generate:dev && DEBUG=api:* NODE_ENV=testing jest --verbose --setupFiles --runInBand --testTimeout=5000"
+  },
+  "dependencies": {
+    "@nestjs/cli": "8.0.0",
+    "@nestjs/common": "8.0.0",
+    "@nestjs/config": "1.0.1",
+    "@nestjs/core": "8.0.0",
+    "@nestjs/mongoose": "8.0.1",
+    "@nestjs/platform-express": "8.0.6",
+    "@nestjs/swagger": "5.0.9",
+    "@secjs/base": "1.2.4",
+    "@secjs/contracts": "1.1.6",
+    "@secjs/env": "1.1.8",
+    "@secjs/exceptions": "1.0.3",
+    "@secjs/logger": "1.1.4",
+    "@secjs/utils": "1.3.8",
+    "@secjs/validator": "1.0.0",
+    "@types/node": "14.17.0",
+    "axios": "0.21.4",
+    "cache-manager": "3.4.4",
+    "cache-manager-redis-store": "2.0.0",
+    "chalk": "4.1.0",
+    "cors": "2.8.5",
+    "debug": "4.3.1",
+    "express-rate-limit": "5.3.0",
+    "faker": "5.5.3",
+    "glob": "7.1.7",
+    "hbs": "4.1.2",
+    "helmet": "4.6.0",
+    "mongoose": "5.13.9",
+    "reflect-metadata": "0.1.13",
+    "rimraf": "3.0.2",
+    "rxjs": "7.2.0",
+    "swagger-ui-express": "4.1.6"
+  },
+  "devDependencies": {
+    "@nestjs/schematics": "8.0.0",
+    "@nestjs/testing": "8.0.0",
+    "@types/axios": "0.14.0",
+    "@types/cache-manager": "3.4.2",
+    "@types/cache-manager-redis-store": "2.0.0",
+    "@types/chalk": "2.2.0",
+    "@types/debug": "4.1.7",
+    "@types/dotenv": "8.2.0",
+    "@types/express": "4.17.13",
+    "@types/express-rate-limit": "5.1.3",
+    "@types/faker": "5.5.8",
+    "@types/glob": "7.1.4",
+    "@types/helmet": "4.0.0",
+    "@types/jest": "27.0.1",
+    "@types/mongoose": "5.11.97",
+    "@types/redis": "2.8.32",
+    "@types/supertest": "2.0.11",
+    "@typescript-eslint/eslint-plugin": "4.31.0",
+    "@typescript-eslint/parser": "4.31.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-import-resolver-typescript": "2.4.0",
+    "eslint-plugin-import": "2.24.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-promise": "5.1.0",
+    "eslint-plugin-standard": "5.0.0",
+    "husky": "3.0.9",
+    "jest": "27.1.0",
+    "lint-staged": "11.1.2",
+    "prettier": "2.3.2",
+    "supertest": "6.1.6",
+    "ts-jest": "27.0.5",
+    "ts-loader": "9.2.3",
+    "ts-node": "10.0.0",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "4.3.5"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint -c ./package.json --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "setupFiles": [
+      "dotenv/config"
+    ],
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app",
+      "config",
+      "start",
+      "database"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      ".+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "standard",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "rules": {
+      "dot-notation": "off",
+      "camelcase": "off",
+      "no-undef": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "no-useless-constructor": "off",
+      "@typescript-eslint/no-useless-constructor": "off",
+      "@typescript-eslint/camelcase": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/interface-name-prefix": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "prettier/prettier": "error",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "_"
+        }
+      ],
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "ts": "never"
+        }
+      ]
+    },
+    "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
+    }
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "avoid",
+    "endOfLine": "lf",
+    "semi": false
+  }
+}

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+  <link href="assets/images/linkapi-full.ico" rel="icon" />
+  <title>Documentation | {{ name }}</title>
+  <meta name="description" content="Welcome to {{ name }} documentation page!">
+  <meta name="author" content="LinkApi Solutions">
+
+  <!-- Stylesheet -->
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css" />
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css" />
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" type="text/css" href="assets/vendor/magnific-popup/magnific-popup.min.css" />
+  <!-- Highlight Syntax -->
+  <link rel="stylesheet" type="text/css" href="assets/vendor/highlight.js/styles/github.css" />
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css" />
+</head>
+
+<body data-spy="scroll" data-target=".idocs-navigation" data-offset="125">
+
+<!-- Preloader -->
+<div class="preloader">
+  <div class="lds-ellipsis">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<!-- Preloader End -->
+
+<!-- Document Wrapper -->
+<div id="main-wrapper">
+
+  <!-- Header -->
+  <header id="header" class="sticky-top">
+    <!-- Navbar -->
+    <nav class="primary-menu navbar navbar-expand-lg bg-dark navbar-text-light navbar-dropdown-dark border-0">
+      <div class="container-fluid">
+        <!-- Sidebar Toggler -->
+        <button id="sidebarCollapse" class="navbar-toggler d-block d-md-none" type="button"><span></span><span class="w-75"></span><span></span></button>
+
+        <!-- Logo -->
+        <a class="logo ml-md-3" href="/" title="Home"> <img src="assets/images/logo-linkapi-horizontal.png" width="200" alt="Home"/> </a>
+        <span class="text-2 text-light ml-2">v{{ version }} | {{ branch }}</span>
+        <!-- Logo End -->
+
+        <!-- Navbar Toggler -->
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#header-nav"></button>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+  </header>
+  <!-- Header End -->
+
+  <!-- Content
+  ============================ -->
+  <div id="content" role="main">
+
+    <!-- Sidebar Navigation -->
+    <div class="idocs-navigation bg-light">
+      <ul class="nav flex-column ">
+        <li class="nav-item"><a class="nav-link" href="#idocs_start">☕ Start</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#idocs_running_the_project">🚀 Running the project</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#idocs_installation">Installation</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_running_databases">Databases</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_running_tests">Tests</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_running_production">Production</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_running_development">Development</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#idocs_architecture">🏗️ Architecture</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#idocs_history">History</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_project_structure">Project structure</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#idocs_environment_variables">📤 Environment Variables</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_host">HOST</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_port">PORT</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_node_env">NODE_ENV</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_app_prefix">APP_PREFIX</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_app_key">APP_KEY</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_app_name">APP_NAME</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_app_source">APP_SOURCE</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_app_description">APP_DESCRIPTION</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_db_host">DB_HOST</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_db_options">DB_OPTIONS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_db_username">DB_USERNAME</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_db_password">DB_PASSWORD</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_db_database">DB_DATABASE</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_db_connection">DB_CONNECTION</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_redis_host">REDIS_HOST</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_redis_port">REDIS_PORT</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_env_redis_password">REDIS_PASSWORD</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#idocs_resources">🧩 Resources</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#idocs_swagger">Swagger</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_insomnia">Insomnia</a></li>
+            <li class="nav-item"><a class="nav-link" href="#idocs_query_searchs">Query Searches</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#idocs_source">😸 Source</a></li>
+        <li class="nav-item"><a class="nav-link" href="#idocs_support">🆘 Support</a></li>
+        <li class="nav-item"><a class="nav-link" href="#idocs_changelog">🌱 Changelog</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#v1.0.0">v1.0.0</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Docs Content -->
+    <div class="idocs-content">
+      <div class="container">
+        <!-- Getting Started -->
+        <section id="idocs_start">
+          <h1>☕ Start</h1>
+          <h2>{{ name }}</h2>
+          <p class="lead">{{ greeting }}</p>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6 col-lg-4">
+              <ul class="list-unstyled">
+                <li><strong>Version:</strong> {{ version }}</li>
+                <li><strong>Author:</strong> <a href="https://www.linkapi.solutions/" target="_blank">LinkApi</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <ul class="list-unstyled">
+                <li><strong>Prefix:</strong> {{ prefix }}</li>
+                <li><strong>Commit hash:</strong> {{ commit }}</li>
+              </ul>
+            </div>
+          </div>
+          <p class="alert alert-info">If you have any questions that are beyond the scope of this documentation, Please contact LinkApi product team by <a href="mailto:product@linkapi.com.br">email</a>.</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Running the project -->
+        <section id="idocs_running_the_project">
+          <h2>🚀 Running the project</h2>
+          <p class="text-4">See how to install, build, test and run the project.</p>
+
+          <hr>
+
+          <h3 id="idocs_installation">Installation</h3>
+          <p>First install the project dependencies</p>
+          <pre><code>npm install</code></pre>
+
+          <p>Generate the archive .env and change the connection of Redis and MongoDB</p>
+          <pre><code>cp .env.example .env && cp .env.example .env.testing</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_running_databases">Databases</h3>
+          <p>Run a instance of <b>Redis</b> database for <b>testing</b> and <b>development</b> using <b>Docker</b></p>
+          <pre><code>docker run --name=redis-devel --publish=6379:6379 --hostname=redis --restart=on-failure --detach redis:latest</code></pre>
+
+          <p>Run a instance of <b>MongoDB</b> cluster for <b>testing</b> and <b>development</b> using <b>Docker</b></p>
+          <pre><code>docker run --name=mongodb-devel -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root -d mongo</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_running_tests">Tests</h3>
+          <p>To run <b>E2E</b> and <b>Unit</b> tests</p>
+          <pre><code>npm run test</code></pre>
+
+          <p>To run <b>E2E</b> and <b>Unit</b> tests with <b>debug logs</b></p>
+          <pre><code>npm run test:debug</code></pre>
+
+          <p>To run a specific test use <b>test</b> or <b>test:debug</b> and the path to the test</p>
+          <pre><code>npm run test tests/Unit/Collections/codeCommit.spec.ts</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_running_production">Production</h3>
+          <p>To run the application in <b>production</b> mode</p>
+          <pre><code>npm start</code></pre>
+
+          <p>To run the application in <b>production</b> mode with debug logs</p>
+          <pre><code>npm run start:debug:prod</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_running_development">Development</h3>
+          <p>To run the application in <b>development</b> mode</p>
+          <pre><code>npm run start:dev</code></pre>
+
+          <p>To run the application in <b>development</b> mode with debug logs</p>
+          <pre><code>npm run start:debug:dev</code></pre>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Architecture -->
+        <section id="idocs_architecture">
+          <h2>🏗️ Architecture</h2>
+          <p class="text-4">See how the project has been architected to work.</p>
+
+          <hr>
+
+          <h3 id="idocs_history">History</h3>
+          <p align="justify">The heart of the project is within <b>start/kernel.ts</b>, <b>app/AppModule.ts</b> and <b>providers/ApplicationProvider</b>. <b>start/kernel.ts</b> is where an array of imports is created to be used within NestJS, this array is always called in the imports of the AppModule, and he loads some of the <b>config/*.ts</b> files from the project.</p>
+
+          <hr>
+
+          <h3 id="idocs_project_structure">Project structure</h3>
+          <p align="justify"><b>providers/ApplicationProvider</b> load all the providers (services, repositories, models, guards, middlewares, pipes and controllers) from the application, AppModule will call ApplicationProvider as a <b>Singleton</b> and <b>constructor</b> will execute all the boot methods inside it and creating arrays to use inside AppModule providers and controllers. Basically if you need to create a new <b>controller</b> or <b>service</b>, you don't need to pass it into the AppModule, just create the file and let ApplicationProvider take care of the rest.</p>
+          <p>🛑 Is extremely important to follow this project structure to <b>providers/ApplicationProvider</b> works</p>
+          <pre>
+            <code>app
+├── Contracts
+│   ├── Dtos
+│   ├── *Contract.ts
+├── Decorators
+|   ├── Http
+|   ├── Providers
+│   ├── Services
+├── Http
+│   ├── Filters
+│   ├── Guards
+│   ├── Interceptors
+│   ├── Middlewares
+│   ├── Controllers
+├── Models
+│   ├── *.ts
+├── Pipes
+│   ├── *Pipe.ts
+├── Repositories
+│   ├── *Repository.ts
+├── Resources
+│   ├── *Resource.ts
+├── Schemas
+│   ├── *.ts
+├── Services
+│   ├── Api
+│   ├── Collections
+│   ├── Utils
+├── Utils
+│   ├── *.ts
+├── Validators
+│   ├── *Validator.ts
+├── AppModule.ts
+config
+├── *.ts
+database
+├── *.ts
+├── *.sql
+providers
+├── *.ts
+├── ApplicationProvider.ts
+start
+├── kernel.ts
+├── main.ts
+tests
+├── E2E
+│   ├── Resource Name
+├── Unit
+│   ├── Resource Name
+├── Utils
+│   ├── App.ts
+│   ├── Database.ts</code>
+          </pre>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Environment variables -->
+        <section id="idocs_environment_variables">
+          <h2>📤 Environment variables</h2>
+          <p class="text-4">See why behind each environment variable.</p>
+
+          <hr>
+
+          <h3 id="idocs_env_host">HOST</h3>
+          <p>Used only to build the application URL to fetch static images etc.</p>
+          <pre><code>HOST="127.0.0.1"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_port">PORT</h3>
+          <p>Used to set the port that the project will run and to build the URL.</p>
+          <pre><code>PORT="3000"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_node_env">NODE_ENV</h3>
+          <p>Used to set the node environment that the API is running.</p>
+          <pre><code>NODE_ENV="development"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_app_prefix">APP_PREFIX</h3>
+          <p>Used to set the API prefix that the api will handle all requests.</p>
+          <pre><code>APP_PREFIX="/git"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_app_key">APP_KEY</h3>
+          <p>Used to create hashs and authenticate requests by apiKey query param.</p>
+          <pre><code>APP_KEY=""</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_app_name">APP_NAME</h3>
+          <p>Used to set the API name for documentations.</p>
+          <pre><code>APP_NAME="API Projects"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_app_source">APP_SOURCE</h3>
+          <p>Used to set the source link of the project.</p>
+          <pre><code>APP_SOURCE="https://github.com/organization/project-name-here"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_app_description">APP_DESCRIPTION</h3>
+          <p>Used to set the API description for documentations.</p>
+          <pre><code>APP_DESCRIPTION="Projects API Service"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_db_host">DB_HOST</h3>
+          <p>Used to connect to Mongo database host.</p>
+          <pre><code>DB_HOST="cluster0.uagp0.mongodb.net"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_db_options">DB_OPTIONS</h3>
+          <p>Used to connect to Mongo database with some options you preffer as query string.</p>
+          <pre><code>DB_OPTIONS="retryWrites=true&w=majority"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_db_username">DB_USERNAME</h3>
+          <p>Used to connect to Mongo database with some determined user.</p>
+          <pre><code>DB_USERNAME="root"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_db_password">DB_PASSWORD</h3>
+          <p>Used to connect to Mongo database with some determined password.</p>
+          <pre><code>DB_PASSWORD="root"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_db_database">DB_DATABASE</h3>
+          <p>Used to connect to a specific Mongo database.</p>
+          <pre><code>DB_DATABASE="root"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_db_connection">DB_CONNECTION</h3>
+          <p>Used to set the type of connection to use in connection to Mongo database.</p>
+          <pre><code>DB_CONNECTION="mongodb+srv"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_redis_host">REDIS_HOST</h3>
+          <p>Used to connect to Redis database for caching.</p>
+          <pre><code>REDIS_HOST="127.0.0.1"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_redis_port">REDIS_PORT</h3>
+          <p>Used to connect to Redis database for caching.</p>
+          <pre><code>REDIS_PORT="6379"</code></pre>
+
+          <hr>
+
+          <h3 id="idocs_env_redis_password">REDIS_PASSWORD</h3>
+          <p>Used to connect to Redis database for caching.</p>
+          <pre><code>REDIS_PASSWORD=""</code></pre>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Resources -->
+        <section id="idocs_resources">
+          <h2>🧩 Resources</h2>
+          <p class="text-4">See all the resources and collections from {{ name }}.</p>
+
+          <hr>
+
+          <h3 id="idocs_swagger">Swagger</h3>
+          <p>You can find all the project documentation inside <a class="ml-1" target="_blank" href="{{ domain }}{{ prefix }}/swagger"><i class="fas fa-external-link-alt"></i> Swagger clicking here</a></p>
+
+          <hr>
+
+          <h3 id="idocs_insomnia">Insomnia</h3>
+          <p>If you prefer a more detailed documentation use <a class="ml-1" target="_blank" href="{{ domain }}{{ prefix }}/insomnia"><i class="fas fa-external-link-alt"></i> Insomnia collection</a></p>
+
+          <hr>
+
+          <h3 id="idocs_query_searchs">Query Searches</h3>
+          <p>This API was developed in a way that it was possible to make any type of filter for the database, see the types of filters using query parameters:</p>
+          <b><code>(*) - Will fetch a where query</code></b><br><br>
+          <pre><code>*name='%teste' // Where name is like teste
+*deletedAt='null' // Where deletedAt IS NULL
+*deletedAt='!null' // Where deletedAt IS NOT NULL
+*status='!pendent,approved' // Where status is NOT IN pendent and approved
+*status='pendent,approved' // Where status is IN pendent and approved
+*deletedAt='2021-08-30T16:00:00.961+00:00 -> 2021-08-30T16:13:00.961+00:00' // Where status is BETWEEN 2021-08-30T16:00:00.961+00:00 and 2021-08-30T16:13:00.961+00:00
+*status='pendent' // Where status is pendent</code></pre>
+          <b><code>(-) - Will fetch a orderBy query</code></b><br><br>
+          <pre><code>// Can only be ASC or DESC
+-deletedAt='asc'
+-deletedAt='desc'</code></pre>
+          <b><code>(_) - Will fetch a include query</code></b><br><br>
+          <pre><code>_repositories=[] // Will include repositories inside project
+_repositories=['user'] // Will include repositories inside project and user inside repositories</code></pre>
+
+          <hr>
+
+          <h5>Other simple queries <small class="text-muted">(See more in <a class="ml-1" target="_blank" href="{{ domain }}{{ prefix }}/insomnia"><i class="fas fa-external-link-alt"></i> Insomnia collection</a>)</small></h5>
+        </section>
+
+        <!-- Source -->
+        <section id="idocs_source">
+          <h2>😸 Source</h2>
+          <p class="text-4">Go to <a class="ml-1" target="_blank" href="{{ repository }}"><i class="fas fa-external-link-alt"></i> Azure DevOps repository</a></p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Support -->
+        <section id="idocs_support">
+          <h2>🆘 Support</h2>
+          <p class="text-4">Please provide a question in <a class="ml-1" target="_blank" href="https://stackoverflow.com/c/linkapi/questions"><i class="fas fa-external-link-alt"></i>LinkApi Stack Overflow</a> organization</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Changelog -->
+
+        <section id="idocs_changelog">
+          <h2>🌱 Changelog</h2>
+          <p class="text-4">See what's new added, changed, fixed, improved or updated in the latest versions.</p>
+
+          <h3 id="v1.0.0">Version 1.0.0 <small class="text-muted">(09 Oct, 2021)</small></h3>
+
+          <ul class="changelog">
+            <li><span class="badge badge-success">Added</span> Initial boilerplate commit.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+  <!-- Content end -->
+
+  <!-- Footer -->
+  <footer id="footer" class="section bg-dark footer-text-light">
+    <div class="container">
+      <p class="text-center">Copyright &copy; 2021 <a href="https://www.linkapi.solutions/">LinkApi Solutions</a>. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <!-- Footer end -->
+
+</div>
+<!-- Document Wrapper end -->
+
+<!-- Back To Top -->
+<a id="back-to-top" data-toggle="tooltip" title="Back to Top" href="javascript:void(0)"><i class="fa fa-chevron-up"></i></a>
+
+<!-- JavaScript -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Highlight JS -->
+<script src="assets/vendor/highlight.js/highlight.min.js"></script>
+<!-- Easing -->
+<script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<!-- Magnific Popup -->
+<script src="assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<!-- Custom Script -->
+<script src="assets/js/theme.js"></script>
+</body>
+</html>

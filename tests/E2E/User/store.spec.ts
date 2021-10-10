@@ -1,0 +1,70 @@
+import * as request from 'supertest'
+
+import { Debug } from '@secjs/logger'
+import { AppModule } from 'app/AppModule'
+import { App, Database } from 'tests/Utils'
+
+describe('\n[E2E] User 🧱', () => {
+  it('should create a new user', async () => {
+    const status = 201
+    const method = 'POST'
+    const path = `/users`
+
+    const payload = {
+      name: 'test',
+    }
+
+    const { body } = await request(app.server.getHttpServer())
+      .post(path)
+      .send(payload)
+      .expect(status)
+
+    expect(body.method).toBe(method)
+    expect(body.status).toBe(status)
+    expect(body.data.name).toBe(payload.name)
+  })
+
+  // Implement all properties in app/Validators/UserValidator.ts
+  // And create tests to validate if the schema validator are working well.
+
+  // it('should throw validation errors when trying to create a user with validation errors', async () => {
+  //   const status = 422
+  //   const path = `/users`
+  //
+  //   const { body } = await request(app.server.getHttpServer())
+  //     .post(path)
+  //     .send({})
+  //     .expect(status)
+  //
+  //   expect(body.status).toBe(status)
+  //   expect(body.error.message).toStrictEqual({
+  //     name: 'Unprocessable Entity Error',
+  //     statusCode: status,
+  //     message: [
+  //       {
+  //         field: 'name',
+  //         message: 'required validation failed on name',
+  //         validation: 'required',
+  //       },
+  //     ],
+  //   })
+  // })
+})
+
+let app: App
+let database: Database
+
+beforeEach(async () => {
+  Debug(`Executing ${beforeEach.name}`, 'api:test')
+
+  app = await new App([AppModule]).initApp()
+  database = new Database(app)
+})
+
+afterEach(async () => {
+  Debug(`Executing ${afterEach.name}`, 'api:test')
+
+  await database.truncate()
+  await database.truncateCache()
+  await app.closeApp()
+})
